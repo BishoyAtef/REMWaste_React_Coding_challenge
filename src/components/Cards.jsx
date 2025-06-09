@@ -2,16 +2,17 @@ import {useState, useEffect} from 'react'
 import CustomCard from './Card';
 import Spinner from './Spinner'
 import AnimatedFooter from './AnimatedFooter';
+import { useSelectedSkip } from '../context/SelectedSkipContext';
 
-const Cards = ({ isHome = false }) => {
+const Cards = ({}) => {
   const [skips, setSkips] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [selectedSkipId, setSelectedSkipId] = useState(null); // <-- Track selected card
-  const [selectedSkip, setSelectedSkip] = useState(null); 
-
+  const { selectedSkip, setSelectedSkip } = useSelectedSkip(); 
+  const [selectedSkipId, setSelectedSkipId] = useState(selectedSkip?.id || null);
+  
   useEffect(() => {
     const fetchJobs = async () => {
-      const apiUrl = isHome ? '/api/skips?_limit=3' : '/api/skips';
+      const apiUrl = '/api/skips';
       try {
         const res = await fetch(apiUrl);
         const data = await res.json();
@@ -28,11 +29,11 @@ const Cards = ({ isHome = false }) => {
   return (
     <section className="bg-blue-50 px-4 py-10 relative">
       <div className="container-xl lg:container gap-6 m-auto">
-        <h2 className="text-3xl font-bold text-indigo-500 mb-6 text-center">
-          {isHome ? 'Recent Jobs' : 'Choose Your Skip Size'}
-        </h2>
-        <h3 className="relative text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-indigo-500 to-purple-500 mb-6 text-center mx-auto animate-shimmer w-fit">
-          {isHome ? 'Recent Jobs' : 'Select the skip size that best suits your needs'}
+        {/* <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-indigo-500 to-purple-500 mb-8 text-center mx-auto animate-shimmer w-fit drop-shadow-sm tracking-wide leading-snug">
+          Choose Your Skip Size
+        </h2> */}
+        <h3 className="relative text-3xl md:text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-indigo-500 to-purple-500 mb-8 text-center mx-auto animate-shimmer w-fit drop-shadow-sm tracking-wide leading-snug">
+          Select the skip size that best suits your needs
         </h3>
         {loading ? (
           <Spinner loading={loading} />
@@ -53,8 +54,7 @@ const Cards = ({ isHome = false }) => {
         )}
       </div>
 
-      {/* Conditional footer */}
-      <AnimatedFooter skip={selectedSkip} show={selectedSkipId} text={"You have selected a skip. Continue to checkout or modify your selection."} />
+      <AnimatedFooter skip={selectedSkip} show={selectedSkipId} text={"You have selected a skip."} />
     </section>
   );
 };

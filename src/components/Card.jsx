@@ -6,7 +6,13 @@ const CustomCard = ({ skip, isSelected, onSelect }) => {
   const skipImg = getSkipImage(skip.size);
 
   return (
-    <div className="max-w-sm mx-auto rounded overflow-hidden shadow-lg relative flex flex-col justify-between h-full bg-white">
+    <div 
+      className={`max-w-sm mx-auto rounded overflow-hidden shadow-lg relative flex flex-col justify-between h-full bg-white transform transition-transform duration-300 ${
+        isSelected
+          ? 'scale-105 shadow-2xl animate-pop-slow'
+          : 'hover:scale-105 hover:shadow-2xl'
+      }`}
+    >
       <img
         className="w-128 h-64 object-cover"
         src={skipImg}

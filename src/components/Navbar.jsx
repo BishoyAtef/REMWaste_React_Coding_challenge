@@ -1,40 +1,55 @@
-import { NavLink, Link } from 'react-router-dom'
+import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 import logo from '../assets/imgs/logo.jpeg'
 
 const Navbar = () => {
-  const linkClass = ({ isActive }) => isActive? 
-                                    'bg-black text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2' : 
-                                    'text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2'
+  const [isOpen, setIsOpen] = useState(false);
+
+  const linkClass = ({ isActive }) =>
+    isActive
+      ? "bg-indigo-600 text-white rounded-md px-4 py-2 transition"
+      : "text-white hover:bg-indigo-500 hover:text-white rounded-md px-4 py-2 transition";
 
   return (
-    <nav className="bg-gray-700 border-b border-gray-500">
-        <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-            <div className="flex h-20 items-center justify-between">
-            <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
-                {/* <!-- Logo --> */}
-                <Link className="flex flex-shrink-0 items-center mr-4" to="/">
-                <img
-                    className="h-10 w-auto"
-                    src={logo}
-                    alt="REMWaste"
-                />
-                <span className="hidden md:block text-white text-2xl font-bold ml-2">REMWaste</span>
-                </Link>
-                <div className="md:ml-auto">
-                <div className="flex space-x-2">
-                    <NavLink
-                    to="/"
-                    className={linkClass}>Back</NavLink>
-                    <NavLink
-                    to="/jobs"
-                    className={linkClass}>Continue</NavLink>
-                </div>
-                </div>
-            </div>
-            </div>
+    <nav className="bg-gray-800 border-b border-gray-700 shadow-md">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between">
+          <Link to="/" className="flex items-center">
+            <img src={logo} alt="REMWaste" className="h-10 w-auto" />
+            <span className="text-white text-xl font-bold ml-2 hidden md:inline">
+              REMWaste
+            </span>
+          </Link>
+
+          <div className="hidden md:flex space-x-4">
+            <NavLink to="/" className={linkClass}>
+              Back
+            </NavLink>
+          </div>
+
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-white md:hidden"
+          >
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
         </div>
+      </div>
+
+      {isOpen && (
+        <div className="md:hidden px-4 pb-4 pt-2 bg-gray-700 space-y-2 transition-all">
+          <NavLink to="/" className={linkClass} onClick={() => setIsOpen(false)}>
+            Back
+          </NavLink>
+          <NavLink to="/jobs" className={linkClass} onClick={() => setIsOpen(false)}>
+            Continue
+          </NavLink>
+        </div>
+      )}
     </nav>
-  )
-}
+  );
+};
+
 
 export default Navbar
