@@ -1,7 +1,6 @@
 import {useState, useEffect} from 'react'
 import CustomCard from './Card';
 import Spinner from './Spinner'
-import AnimatedFooter from './AnimatedFooter';
 import { useSelectedSkip } from '../context/SelectedSkipContext';
 
 const Cards = ({}) => {
@@ -27,7 +26,7 @@ const Cards = ({}) => {
   }, []);
 
   return (
-    <section className="bg-blue-50 px-4 py-10 relative">
+    <section className="bg-blue-50 px-4 py-10 relative pb-40">
       <div className="container-xl lg:container gap-6 m-auto">
         {/* <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-indigo-500 to-purple-500 mb-8 text-center mx-auto animate-shimmer w-fit drop-shadow-sm tracking-wide leading-snug">
           Choose Your Skip Size
@@ -53,8 +52,6 @@ const Cards = ({}) => {
           </div>
         )}
       </div>
-
-      <AnimatedFooter skip={selectedSkip} show={selectedSkipId} text={"You have selected a skip."} />
     </section>
   );
 };

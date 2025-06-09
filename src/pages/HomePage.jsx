@@ -1,6 +1,5 @@
 import Cards from "../components/Cards"
 
-
 const HomePage = () => {
   return (
     <>

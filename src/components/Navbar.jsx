@@ -42,9 +42,6 @@ const Navbar = () => {
           <NavLink to="/" className={linkClass} onClick={() => setIsOpen(false)}>
             Back
           </NavLink>
-          <NavLink to="/jobs" className={linkClass} onClick={() => setIsOpen(false)}>
-            Continue
-          </NavLink>
         </div>
       )}
     </nav>
