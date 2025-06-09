@@ -1,9 +1,10 @@
+import Cards from "../components/Cards"
 
 
 const HomePage = () => {
   return (
     <>
-        <h1>hi there</h1>
+        <Cards isHome={false}/>
     </>
   )
 }

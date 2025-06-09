@@ -24,10 +24,10 @@ const Navbar = () => {
                 <div className="flex space-x-2">
                     <NavLink
                     to="/"
-                    className={linkClass}>Button1</NavLink>
+                    className={linkClass}>Back</NavLink>
                     <NavLink
                     to="/jobs"
-                    className={linkClass}>Button2</NavLink>
+                    className={linkClass}>Continue</NavLink>
                 </div>
                 </div>
             </div>
