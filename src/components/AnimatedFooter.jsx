@@ -1,65 +1,6 @@
-import calculateSkipPrice from '../utils/SkipPricingService';
-
-// const AnimatedFooter = ({ skip, show, text }) => {
-//   const navigate = useNavigate();
-
-//   return (
-//     <div
-//       className={`fixed bottom-0 left-0 w-full bg-gray-700 text-white py-6 px-6 shadow-2xl z-50
-//                   transform transition-transform duration-500 ${
-//                     show ? 'translate-y-0' : 'translate-y-full'
-//                   }`}
-//     >
-//       <div className="max-w-6xl mx-auto flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-//         <p className="text-lg md:text-xl font-semibold">{text}</p>
-
-//         <div
-//           className={`grid grid-cols-2 md:grid-cols-4 gap-4 text-sm md:text-base text-indigo-100 transition-opacity duration-300 ${
-//             skip ? 'opacity-100' : 'opacity-0 pointer-events-none'
-//           }`}
-//         >
-//           <div className="transition duration-300 hover:text-white hover:scale-105">
-//             <span className="block font-semibold text-indigo-200">Size</span>
-//             {skip ? `${skip.size} Yard` : ''}
-//           </div>
-//           <div className="transition duration-300 hover:text-white hover:scale-105">
-//             <span className="block font-semibold text-indigo-200">Price</span>
-//             {skip ? `£${calculateSkipPrice(skip.price_before_vat, skip.vat)}` : ''}
-//           </div>
-//           <div className="transition duration-300 hover:text-white hover:scale-105">
-//             <span className="block font-semibold text-indigo-200">Hire Period</span>
-//             {skip ? `${skip.hire_period_days} Days` : ''}
-//           </div>
-//           <div className="transition duration-300 hover:text-white hover:scale-105">
-//             <span className="block font-semibold text-indigo-200">On-Road</span>
-//             {skip ? (skip.allowed_on_road ? 'Yes' : 'No') : ''}
-//           </div>
-//         </div>
-
-//         <div className="flex gap-4 justify-center md:justify-end">
-//           <button
-//             onClick={() => navigate(-1)}
-//             className="bg-gray-100 text-indigo-700 font-semibold py-2 px-4 rounded-md hover:bg-gray-200 transition duration-300"
-//           >
-//             Back
-//           </button>
-//           <button
-//             onClick={() => navigate('/checkout')}
-//             className="bg-purple-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-purple-700 transition duration-300"
-//           >
-//             Continue
-//           </button>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-
-// export default AnimatedFooter
-
 import { Ruler, DollarSign, CalendarClock, TrafficCone } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import calculateSkipPrice from '../utils/SkipPricingService';
 
 const AnimatedFooter = ({ skip, show, text }) => {
   const navigate = useNavigate();

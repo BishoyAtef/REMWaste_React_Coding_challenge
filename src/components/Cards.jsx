@@ -12,7 +12,7 @@ const Cards = ({}) => {
   
   useEffect(() => {
     const fetchJobs = async () => {
-      const apiUrl = '/api/skips';
+      const apiUrl = 'http://localhost:8000/skips';
       try {
         const res = await fetch(apiUrl);
         const data = await res.json();
