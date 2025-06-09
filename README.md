@@ -1,12 +1,67 @@
-# React + Vite
+# REMWaste Skip Selector
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React application for browsing and selecting skip sizes, built with reusability, smooth UX, and clean architecture in mind.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ⚛️ **React** with functional components and hooks
+- 🌐 **React Router DOM** for seamless client-side routing
+- 📦 **Context API + LocalStorage** to persist skip selection across reloads and navigation
+- 💅 **Tailwind CSS** for responsive and elegant styling
+- 📸 **Dynamic assets** based on skip size
+- 🌀 **Loading spinner** while fetching backend data
+- 🐳 **Dockerized** for easy deployment and environment consistency
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🧱 Project Structure
+
+### 📁 Components
+
+- `Navbar.jsx` – Responsive navigation bar with mobile support
+- `AnimatedFooter.jsx` – Dynamic footer showing selected skip and navigation buttons
+- `Card.jsx` – Individual skip card with hover effects and selection state
+- `Cards.jsx` – Grid layout to display available skips
+- `Spinner.jsx` – Simple loading animation during data fetching
+
+### 📄 Pages
+
+- `HomePage.jsx` – Main page for selecting skips
+- `NotFoundPage.jsx` – Fallback page for unmatched routes
+
+### 🧩 Layouts
+
+- `MainLayout.jsx` – Shared layout structure with navbar and content container
+
+---
+
+## 🧠 State Management
+
+A custom context handles the selected skip state and persists it using `localStorage`, ensuring the selection remains intact even after a page reload or navigation.
+
+---
+
+## 🛠 Utilities
+
+- `calculateSkipPrice()` – Computes the final price based on VAT and base price
+- `getSkipImage()` – Dynamically selects the correct image based on skip size
+
+---
+
+## 🐳 Running with Docker
+
+To simplify setup and deployment, the app is fully containerized using Docker.
+
+```bash
+# Build the image
+docker compose up --build
+
+# For subsequent runs
+docker compose up
+
+# Stop the app
+docker compose down
+
+# Stop and remove containers, volumes, and networks
+docker compose down --volumes
+
